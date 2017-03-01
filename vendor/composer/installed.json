@@ -1,0 +1,51 @@
+[
+    {
+        "name": "sybio/gif-frame-extractor",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Sybio/GifFrameExtractor.git",
+            "reference": "13e9880add3ae9cca10a48a0a3897fe3d0069f71"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packagist.phpcomposer.com/files/Sybio/GifFrameExtractor/13e9880add3ae9cca10a48a0a3897fe3d0069f71.zip",
+            "reference": "13e9880add3ae9cca10a48a0a3897fe3d0069f71",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2012-10-13T09:06:51+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "GifFrameExtractor": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Clément Guillemain",
+                "homepage": "http://clementguillemain.fr",
+                "role": "Developer / Freelancer"
+            }
+        ],
+        "description": "PHP class that separates all the frames (and their duration) of an animated GIF",
+        "homepage": "https://github.com/Sybio/GifFrameExtractor",
+        "keywords": [
+            "animated",
+            "duration",
+            "frame",
+            "gif",
+            "php",
+            "separate",
+            "time"
+        ]
+    }
+]
