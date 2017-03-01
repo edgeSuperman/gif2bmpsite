@@ -74,7 +74,7 @@ if (isset($_FILES["gif"])) {
         header("Content-Length: " . filesize($file));
         readfile($file);
 
-        exit();
+        exit("下载完毕");
     }
 } else {
     echo "empty upload";
