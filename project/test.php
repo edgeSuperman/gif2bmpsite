@@ -62,12 +62,12 @@ if (isset($_FILES["gif"])) {
     //删除文件
     exec("rm -rf ../output/{$id}/");
 
-    header("Content-type: application/x-gzip");
-    header("Content-Disposition: attachment; filename=gif2bmp{$id}.tar.gz");
-    header("Content-Description: PHP3 Generated Data");
+    $file = '../output/gif2bmp{$id}.tar.gz';
 
-    $filename = '../output/gif2bmp{$id}.tar.gz';
-    readfile("$filename");
+    header("Content-type: application/octet-stream");
+    header('Content-Disposition: attachment; filename="' . basename($file) . '"');
+    header("Content-Length: ". filesize($file));
+    readfile($file);
 
     exit();
 } else {
