@@ -62,7 +62,7 @@ if (isset($_FILES["gif"])) {
         separateGIF2BMP($filename, $id);
 
         //打包
-        exec("cd .. &&  tar -zcf output/gif2bmp{$id}.tar.gz output/$id/");
+        exec("cd ../output &&  tar -zcf ../output/gif2bmp{$id}.tar.gz $id/");
 
         //删除文件
         exec("rm -rf ../output/{$id}/");
