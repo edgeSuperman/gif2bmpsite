@@ -69,6 +69,7 @@ if (isset($_FILES["gif"])) {
     $filename = '../output/gif2bmp{$id}.tar.gz';
     readfile("$filename");
 
+    exit();
 } else {
     echo "empty upload";
 }
