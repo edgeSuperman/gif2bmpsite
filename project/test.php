@@ -20,7 +20,7 @@ function separateGIF2BMP($gifFilePath = '../img/target.gif', $Id)
     if (GifFrameExtractor::isAnimatedGif($gifFilePath)) {
 
         //输出
-        mkdir ("../output/{$Id}/", 0777, true);
+        mkdir("../output/{$Id}/", 0777, true);
 
         $gfe = new GifFrameExtractor();
         $gfe->extract($gifFilePath);
@@ -43,27 +43,33 @@ function separateGIF2BMP($gifFilePath = '../img/target.gif', $Id)
     }
 }
 
-function generateID(){
+function generateID()
+{
     return time() * 1000 + rand();
 }
 
 $id = generateID();
 
+if (isset($_FILES["gif"])) {
 
+    $filename = $_FILES["gif"]["tmp_name"];
 
-separateGIF2BMP("../img/target.gif", $id);
+    separateGIF2BMP($filename, $id);
 
-//打包
-exec("cd .. &&  tar -zcf output/gif2bmp{$id}.tar.gz output/$id/");
+    //打包
+    exec("cd .. &&  tar -zcf output/gif2bmp{$id}.tar.gz output/$id/");
 
-//删除文件
-exec("rm -rf ../output/{$id}/");
+    //删除文件
+    exec("rm -rf ../output/{$id}/");
 
-header("Content-type: application/x-gzip");
-header("Content-Disposition: attachment; filename=gif2bmp{$id}.tar.gz");
-header("Content-Description: PHP3 Generated Data");
+    header("Content-type: application/x-gzip");
+    header("Content-Disposition: attachment; filename=gif2bmp{$id}.tar.gz");
+    header("Content-Description: PHP3 Generated Data");
 
-$filename = '../output/gif2bmp{$id}.tar.gz';
-readfile("$filename");
+    $filename = '../output/gif2bmp{$id}.tar.gz';
+    readfile("$filename");
 
+} else {
+    echo "empty upload";
+}
 
