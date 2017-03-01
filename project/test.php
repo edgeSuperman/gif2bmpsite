@@ -54,22 +54,28 @@ if (isset($_FILES["gif"])) {
 
     $filename = $_FILES["gif"]["tmp_name"];
 
-    separateGIF2BMP($filename, $id);
+    if (exif_imagetype($filename) != IMAGETYPE_GIF) {
+        echo "图片格式请上传gif";
+        return;
+    } else {
 
-    //打包
-    exec("cd .. &&  tar -zcf output/gif2bmp{$id}.tar.gz output/$id/");
+        separateGIF2BMP($filename, $id);
 
-    //删除文件
-    exec("rm -rf ../output/{$id}/");
+        //打包
+        exec("cd .. &&  tar -zcf output/gif2bmp{$id}.tar.gz output/$id/");
 
-    $file = "../output/gif2bmp{$id}.tar.gz";
+        //删除文件
+        exec("rm -rf ../output/{$id}/");
 
-    header("Content-type: application/octet-stream");
-    header('Content-Disposition: attachment; filename="' . basename($file) . '"');
-    header("Content-Length: ". filesize($file));
-    readfile($file);
+        $file = "../output/gif2bmp{$id}.tar.gz";
 
-    exit();
+        header("Content-type: application/octet-stream");
+        header('Content-Disposition: attachment; filename="' . basename($file) . '"');
+        header("Content-Length: " . filesize($file));
+        readfile($file);
+
+        exit();
+    }
 } else {
     echo "empty upload";
 }
