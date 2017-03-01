@@ -62,7 +62,7 @@ if (isset($_FILES["gif"])) {
     //删除文件
     exec("rm -rf ../output/{$id}/");
 
-    $file = '../output/gif2bmp{$id}.tar.gz';
+    $file = "../output/gif2bmp{$id}.tar.gz";
 
     header("Content-type: application/octet-stream");
     header('Content-Disposition: attachment; filename="' . basename($file) . '"');
